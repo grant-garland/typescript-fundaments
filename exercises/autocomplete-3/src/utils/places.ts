@@ -22,7 +22,7 @@ export interface PlaceDetails {
  */
 export function fetchPlaceSummaries(input: string): Promise<PlaceSummary[]> {
   return fetch(
-    `http://localhost:3000/maps/api/place/autocomplete/json?types=establishment&input=${input}`
+    `http://localhost:9000/maps/api/place/autocomplete/json?types=establishment&input=${input}`
   )
     .then(response => response.json())
     .then(jsonData => {
@@ -34,7 +34,7 @@ export function fetchPlaceDetails(placeids: string[]): Promise<PlaceDetails[]> {
   return Promise.all(
     placeids.map(placeid => {
       return fetch(
-        `http://localhost:3000/maps/api/place/details/json?placeid=${placeid}`
+        `http://localhost:9000/maps/api/place/details/json?placeid=${placeid}`
       )
         .then(response => response.json())
         .then(jsonData => jsonData.result as PlaceDetails);
